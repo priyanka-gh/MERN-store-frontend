@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { loadCart, cartEmpty } from "./helper/cartHelper";
+import {  cartEmpty } from "./helper/cartHelper";
 import { Link } from "react-router-dom";
 import { getmeToken, processPayment } from "./helper/paymentHelper";
 import { createOrder } from "./helper/orderHelper";

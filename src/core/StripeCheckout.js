@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { isAuthenticated } from "../auth/helper";
-import { cartEmpty, loadCart } from "./helper/cartHelper";
+import { cartEmpty } from "./helper/cartHelper";
 import { Link } from "react-router-dom";
 import StripeCheckoutButton from "react-stripe-checkout";
 import { API } from "../backend";
-import { createOrder } from "./helper/orderHelper";
 
 const StripeCheckout = ({
   products,

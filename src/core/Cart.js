@@ -1,12 +1,9 @@
 import React, {useState,useEffect} from 'react';
 import "../styles.css";
-import {API} from "../backend";
 
 import Base from "./Base";
 import Card from './Card';
-import { getProducts } from './helper/coreapicalls';
 import { loadCart } from './helper/cartHelper';
-import StripeCheckout from './StripeCheckout';
 import Paymentb from './Paymentb';
 
 
