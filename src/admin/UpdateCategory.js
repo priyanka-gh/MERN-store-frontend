@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Base from "../core/Base";
 import { Link } from "react-router-dom";
 import {
-  getCategories,
   getCategory,
   updateCategory
 } from "./helper/adminapicall";
@@ -15,18 +14,19 @@ const UpdateCategory = ({ match }) => {
   const [error,setError]=useState(false);
   const [success,setSuccess]=useState(false);
 
-  const preload = categoryId => {
-    getCategory(categoryId).then((data) => {
-      if (data.error) {
-        setError(data.error);
-      } else {
-        setName(data.name);
-      }
-    });
-  };
+
 
 
   useEffect(() => {
+    const preload = categoryId => {
+      getCategory(categoryId).then((data) => {
+        if (data.error) {
+          setError(data.error);
+        } else {
+          setName(data.name);
+        }
+      });
+    };
     preload(match.params.categoryId);
   }, []);
 

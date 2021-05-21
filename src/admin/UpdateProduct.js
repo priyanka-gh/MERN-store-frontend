@@ -32,32 +32,11 @@ const UpdateProduct = ({ match }) => {
     price,
     stock,
     categories,
-    category,
-    loading,
-    error,
     createdProduct,
-    getaRedirect,
     formData
   } = values;
 
-  const preload = productId => {
-    getProduct(productId).then(data => {
-      if (data.error) {
-        setValues({ ...values, error: data.error });
-      } else {
-        preloadCategories();
-        setValues({
-          ...values,
-          name: data.name,
-          description: data.description,
-          price: data.price,
-          category: data.category._id,
-          stock: data.stock,
-          formData: new FormData()
-        });
-      }
-    });
-  };
+
 
   const preloadCategories = () => {
     getCategories().then(data => {
@@ -73,6 +52,24 @@ const UpdateProduct = ({ match }) => {
   };
 
   useEffect(() => {
+    const preload = productId => {
+      getProduct(productId).then(data => {
+        if (data.error) {
+          setValues({ ...values, error: data.error });
+        } else {
+          preloadCategories();
+          setValues({
+            ...values,
+            name: data.name,
+            description: data.description,
+            price: data.price,
+            category: data.category._id,
+            stock: data.stock,
+            formData: new FormData()
+          });
+        }
+      });
+    };
     preload(match.params.productId);
   }, []);
 
@@ -120,13 +117,6 @@ const UpdateProduct = ({ match }) => {
     </div>
   );
 
-  const errorMessage=()=>(
-    <div className="alert alert-alert mt-3"
-    style={{display:createdProduct?"":"none"}}
-    >
-      <h4>Error in Updating {createdProduct}</h4>
-    </div>
-  )
 
   const createProductForm = () => (
     <form>

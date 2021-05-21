@@ -1,4 +1,4 @@
-import React, {useState,useEffect,formData} from 'react';
+import React, {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import Base from "../core/Base";
 import { createaProduct, getCategories } from './helper/adminapicall';
@@ -22,9 +22,12 @@ const AddProduct=()=> {
         formData:""
     });
 
-    const{name,description,price,stock,categories,category,loading,error,createdProduct,getaRedirect,formData}=values;
+    const{name,description,price,stock,categories,createdProduct,getaRedirect,formData}=values;
 
-    const preload=()=>{
+  
+
+    useEffect(() => {
+      const preload=()=>{
         getCategories().then(data=>{
             if(data.error){
                 setValues({...values,error:data.error});
@@ -34,9 +37,7 @@ const AddProduct=()=> {
             }
         });
     };
-
-    useEffect(() => {
-        preload()
+    preload()
     }, [])
 
     const onSubmit=event=>{
@@ -75,13 +76,6 @@ const AddProduct=()=> {
       </div>
     )
 
-    const errorMessage=()=>(
-      <div className="alert alert-alert mt-3"
-      style={{display:createdProduct?"":"none"}}
-      >
-        <h4>Error in creating {createdProduct}</h4>
-      </div>
-    )
 
     const createProductForm = () => (
         <form >
