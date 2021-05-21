@@ -1,0 +1,5 @@
+.nav-item:hover{
+    background-color: black;
+    outline: none;
+    border: 0;
+}

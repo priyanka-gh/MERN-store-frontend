@@ -1,0 +1,27 @@
+.btn,
+.jumbotron,
+.nav :hover {
+  border-radius: 0px;
+}
+
+body{
+  background: #343a40;
+  margin-bottom: 200px;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+ .payment {
+  background: #343a40;
+  overflow: hidden;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  
+} 
